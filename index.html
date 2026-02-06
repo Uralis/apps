@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UralPro | Студия мобильных игр</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #f0f0f0;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            padding: 25px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(0, 183, 255, 0.2);
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #4cc9f0, #4361ee);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: bold;
+            box-shadow: 0 0 15px rgba(76, 201, 240, 0.5);
+        }
+        
+        .logo-text {
+            font-size: 32px;
+            font-weight: 800;
+            background: linear-gradient(to right, #4cc9f0, #4361ee);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .logo-tagline {
+            font-size: 14px;
+            color: #aaa;
+            letter-spacing: 1.5px;
+            margin-top: 5px;
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 80px 0 60px;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            background: linear-gradient(to right, #4cc9f0, #f72585);
+            -webkit-background-cllip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            line-height: 1.6;
+            color: #ccc;
+        }
+        
+        /* Games Section */
+        .games {
+            padding: 60px 0;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 50px;
+            color: #f0f0f0;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 3px;
+            background: linear-gradient(to right, #4cc9f0, #4361ee);
+        }
+        
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+        
+        .game-card {
+            background: rgba(30, 35, 60, 0.7);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(76, 201, 240, 0.2);
+        }
+        
+        .game-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(76, 201, 240, 0.2);
+            border-color: rgba(76, 201, 240, 0.5);
+        }
+        
+        .game-icon {
+            height: 140px;
+            background: linear-gradient(45deg, #1a1a2e, #2d2d5a);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 50px;
+            color: #4cc9f0;
+        }
+        
+        .game-content {
+            padding: 25px;
+        }
+        
+        .game-title {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: #f0f0f0;
+        }
+        
+        .game-description {
+            color: #aaa;
+            line-height: 1.5;
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+        }
+        
+        .game-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 15px;
+        }
+        
+        .game-tag {
+            display: inline-block;
+            padding: 5px 12px;
+            background: rgba(76, 201, 240, 0.15);
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: #4cc9f0;
+        }
+        
+        /* Каталог приложений */
+        .catalog {
+            background: rgba(20, 25, 45, 0.6);
+            border-radius: 15px;
+            padding: 30px;
+            margin-top: 30px;
+        }
+        
+        .catalog h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: #f0f0f0;
+            text-align: center;
+        }
+        
+        .app-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+        }
+        
+        .app-item {
+            padding: 12px 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            border-left: 4px solid #4cc9f0;
+            transition: all 0.2s;
+        }
+        
+        .app-item:hover {
+            background: rgba(76, 201, 240, 0.1);
+            transform: translateX(5px);
+        }
+        
+        /* Stores Section */
+        .stores {
+            padding: 50px 0 80px;
+            text-align: center;
+        }
+        
+        .stores-title {
+            font-size: 2rem;
+            margin-bottom: 40px;
+            color: #f0f0f0;
+        }
+        
+        .store-badges {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 25px;
+        }
+        
+        .store-badge {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px 25px;
+            background: rgba(30, 35, 60, 0.8);
+            border-radius: 12px;
+            text-decoration: none;
+            color: #f0f0f0;
+            transition: all 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .store-badge:hover {
+            transform: translateY(-5px);
+            background: rgba(40, 45, 70, 0.9);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .store-icon {
+            font-size: 32px;
+        }
+        
+        .google-play { color: #34a853; }
+        .yandex-games { color: #fc3f1d; }
+        .rustore { color: #4f6bed; }
+        .playhop { color: #9c27b0; }
+        
+        /* Footer */
+        footer {
+            padding: 40px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+        }
+        
+        .footer-text {
+            color: #777;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+                padding: 0 15px;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .store-badges {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .store-badge {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <div class="logo">
+                <div class="logo-icon">UP</div>
+                <div>
+                    <div class="logo-text">UralPro</div>
+                    <div class="logo-tagline">РАЗРАБОТЧИК МОБИЛЬНЫХ ИГР</div>
+                </div>
+            </div>
+        </header>
+        
+        <!-- Hero Section -->
+        <section class="hero">
+            <h1>UralPro Games</h1>
+            <p>Создаем увлекательные мобильные игры, которые развивают интеллект и логику. Наши головоломки, словесные игры и аркады уже завоевали популярность у тысяч игроков.</p>
+        </section>
+        
+        <!-- Games Section -->
+        <section class="games">
+            <h2 class="section-title">Наши популярные игры</h2>
+            
+            <div class="games-grid">
+                <!-- Судоку -->
+                <div class="game-card">
+                    <div class="game-icon">
+                        <i class="fas fa-th-large"></i>
+                    </div>
+                    <div class="game-content">
+                        <h3 class="game-title">Судоку - игра на логику</h3>
+                        <p class="game-description">Классическая числовая головоломка для развития логического мышления и внимания.</p>
+                        <div class="game-tags">
+                            <span class="game-tag">Головоломка</span>
+                            <span class="game-tag">Логика</span>
+                            <span class="game-tag">Для мозга</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Pixel Assembly -->
+                <div class="game-card">
+                    <div class="game-icon">
+                        <i class="fas fa-paint-brush"></i>
+                    </div>
+                    <div class="game-content">
+                        <h3 class="game-title">Pixel Assembly: Рисование по номерам</h3>
+                        <p class="game-description">Творческая головоломка, где вы создаете пиксельные рисунки по номерам.</p>
+                        <div class="game-tags">
+                            <span class="game-tag">Рисование</span>
+                            <span class="game-tag">Творчество</span>
+                            <span class="game-tag">Релакс</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Найди слово -->
+                <div class="game-card">
+                    <div class="game-icon">
+                        <i class="fas fa-font"></i>
+                    </div>
+                    <div class="game-content">
+                        <h3 class="game-title">Найди слово - 5 букв</h3>
+                        <p class="game-description">Угадайте скрытое слово из 5 букв за ограниченное количество попыток.</p>
+                        <div class="game-tags">
+                            <span class="game-tag">Словесная</span>
+                            <span class="game-tag">Интеллект</span>
+                            <span class="game-tag">Wordle</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Вафля -->
+                <div class="game-card">
+                    <div class="game-icon">
+                        <i class="fas fa-grid"></i>
+                    </div>
+                    <div class="game-content">
+                        <h3 class="game-title">Вафля. Игра в слова</h3>
+                        <p class="game-description">Составляйте слова из букв в вафельной сетке. Чем длиннее слово, тем больше очков!</p>
+                        <div class="game-tags">
+                            <span class="game-tag">Слова</span>
+                            <span class="game-tag">Головоломка</span>
+                            <span class="game-tag">Лингвистика</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Заполнение блоков -->
+                <div class="game-card">
+                    <div class="game-icon">
+                        <i class="fas fa-border-all"></i>
+                    </div>
+                    <div class="game-content">
+                        <h3 class="game-title">Заполнение блоков</h3>
+                        <p class="game-description">Заполните поле блоками различных форм, стараясь разместить их наиболее эффективно.</p>
+                        <div class="game-tags">
+                            <span class="game-tag">Паззл</span>
+                            <span class="game-tag">Пространственное мышление</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Каталог приложений -->
+            <div class="catalog">
+                <h3>Полный каталог приложений</h3>
+                <div class="app-list">
+                    <div class="app-item">Pixel Assembly: Рисование по номерам</div>
+                    <div class="app-item">Магический кроссворд</div>
+                    <div class="app-item">Голодный нубик 3D: Кушать!</div>
+                    <div class="app-item">Берёзка - Блокировка камеры</div>
+                    <div class="app-item">Голодная бабка Гренни</div>
+                    <div class="app-item">Поздравления с Днём Рождения!</div>
+                    <div class="app-item">Страны мира - игра</div>
+                    <div class="app-item">Слово из слов по картинкам</div>
+                    <div class="app-item">Судоку - игра на логику</div>
+                    <div class="app-item">Столицы мира - игра</div>
+                    <div class="app-item">Найди слово - 5 букв (Wordle)</div>
+                    <div class="app-item">Спасение Лизочки</div>
+                    <div class="app-item">2048 Новогодняя</div>
+                    <div class="app-item">2048 - с 3х3 до 8х8</div>
+                    <div class="app-item">100 из 6 чисел</div>
+                    <div class="app-item">Вафля. Игра в слова</div>
+                    <div class="app-item">Заполнение блоков</div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Stores Section -->
+        <section class="stores">
+            <h2 class="stores-title">Наши игры доступны в</h2>
+            <div class="store-badges">
+                <a href="https://play.google.com/store/apps/dev?id=4902355654947965928" class="store-badge" target="_blank">
+                    <i class="fab fa-google-play store-icon google-play"></i>
+                    <div>
+                        <div style="font-weight: bold;">Google Play</div>
+                        <div style="font-size: 0.9rem; color: #aaa;">Основные релизы</div>
+                    </div>
+                </a>
+                
+                <a href="https://yandex.ru/games/developer/45088" class="store-badge" target="_blank">
+                    <i class="fas fa-gamepad store-icon yandex-games"></i>
+                    <div>
+                        <div style="font-weight: bold;">Яндекс Игры</div>
+                        <div style="font-size: 0.9rem; color: #aaa;">5 популярных игр</div>
+                    </div>
+                </a>
+                
+                <a href="https://www.rustore.ru/catalog/developer/mvqhnj" class="store-badge" target="_blank">
+                    <i class="fas fa-store store-icon rustore"></i>
+                    <div>
+                        <div style="font-weight: bold;">RuStore</div>
+                        <div style="font-size: 0.9rem; color: #aaa;">Полный каталог</div>
+                    </div>
+                </a>
+                
+                <a href="https://playhop.com/ru/developer/45088" class="store-badge" target="_blank">
+                    <i class="fas fa-play-circle store-icon playhop"></i>
+                    <div>
+                        <div style="font-weight: bold;">Playhop</div>
+                        <div style="font-size: 0.9rem; color: #aaa;">Браузерные игры</div>
+                    </div>
+                </a>
+            </div>
+        </section>
+        
+        <!-- Footer -->
+        <footer>
+            <p class="footer-text">© 2023-2026 UralPro. Все права защищены.</p>
+            <p class="footer-text">Разработчик мобильных игр: головоломки, словесные игры, аркады и образовательные приложения.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Простая анимация появления карточек
+        document.addEventListener('DOMContentLoaded', function() {
+            const gameCards = document.querySelectorAll('.game-card');
+            const appItems = document.querySelectorAll('.app-item');
+            
+            // Анимация для карточек игр
+            gameCards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                
+                setTimeout(() => {
+                    card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, 100 * index);
+            });
+            
+            // Анимация для элементов каталога
+            setTimeout(() => {
+                appItems.forEach((item, index) => {
+                    item.style.opacity = '0';
+                    
+                    setTimeout(() => {
+                        item.style.transition = 'opacity 0.3s ease, transform 0.3s ease, background 0.3s ease';
+                        item.style.opacity = '1';
+                    }, 50 * index);
+                });
+            }, 500);
+            
+            // Добавление интерактивности для карточек игр
+            gameCards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    const icon = this.querySelector('.game-icon i');
+                    if (icon) {
+                        icon.style.transform = 'scale(1.2)';
+                        icon.style.transition = 'transform 0.3s ease';
+                    }
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    const icon = this.querySelector('.game-icon i');
+                    if (icon) {
+                        icon.style.transform = 'scale(1)';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
