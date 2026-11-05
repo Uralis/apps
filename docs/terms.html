@@ -85,8 +85,8 @@ var lang = localStorage.getItem('terms_lang') ||
   ((navigator.language || '').indexOf('ru') === 0 ? 'ru' : 'en');
 function apply() {
   var names = (typeof APP_NAMES !== 'undefined' && APP_NAMES[appName]) ? APP_NAMES[appName] : null;
-  var ru = names ? names.ru : '';
-  var en = names ? names.en : '';
+  var ru = names ? names.ru : appName;
+  var en = names ? names.en : appName;
   document.title = T[lang].title;
   document.getElementById('pageTitle').textContent = T[lang].title;
   document.getElementById('footer').textContent = T[lang].footer;
@@ -94,7 +94,12 @@ function apply() {
   for (var i = 0; i < ruSpans.length; i++) ruSpans[i].textContent = ru;
   var enSpans = document.getElementById('blockEn').getElementsByClassName('appname');
   for (var j = 0; j < enSpans.length; j++) enSpans[j].textContent = en;
-  var pl = (typeof PRIVACY_URLS !== 'undefined') ? (PRIVACY_URLS[appName] || PRIVACY_URLS._default) : '#';
+  var pl = '#';
+  if (typeof PRIVACY_URLS !== 'undefined' && appName && PRIVACY_URLS[appName]) {
+    pl = PRIVACY_URLS[appName];
+  } else if (typeof PRIVACY_BASE !== 'undefined') {
+    pl = appName ? PRIVACY_BASE + '?app=' + encodeURIComponent(appName) : PRIVACY_BASE;
+  }
   document.getElementById('privLinkRu').href = pl;
   document.getElementById('privLinkEn').href = pl;
   document.getElementById('blockRu').style.display = lang === 'ru' ? '' : 'none';
