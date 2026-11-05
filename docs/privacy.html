@@ -95,8 +95,8 @@ var lang = localStorage.getItem('privacy_lang') ||
   ((navigator.language || '').indexOf('ru') === 0 ? 'ru' : 'en');
 function apply() {
   var names = (typeof APP_NAMES !== 'undefined' && APP_NAMES[appName]) ? APP_NAMES[appName] : null;
-  var ru = names ? names.ru : '';
-  var en = names ? names.en : '';
+  var ru = names ? names.ru : appName;
+  var en = names ? names.en : appName;
   document.title = T[lang].title;
   document.getElementById('pageTitle').textContent = T[lang].title;
   document.getElementById('footer').textContent = T[lang].footer;
