@@ -76,10 +76,8 @@ footer{border-top:1px solid #e5e5e5;margin-top:32px;padding-top:12px;font-size:1
 
 <footer id="footer">© 2026 UralPro</footer>
 </div>
+<script src="config.js"></script>
 <script>
-var APP_NAMES = {
-  'Моя Игра': { ru: '«Моя Игра»', en: '"My Game"' }
-};
 var T = {
   ru: { title: 'Политика конфиденциальности', footer: '© 2026 UralPro' },
   en: { title: 'Privacy Policy', footer: '© 2026 UralPro' }
@@ -96,7 +94,7 @@ var appName = getParams().app || '';
 var lang = localStorage.getItem('privacy_lang') ||
   ((navigator.language || '').indexOf('ru') === 0 ? 'ru' : 'en');
 function apply() {
-  var names = APP_NAMES[appName];
+  var names = (typeof APP_NAMES !== 'undefined' && APP_NAMES[appName]) ? APP_NAMES[appName] : null;
   var ru = names ? names.ru : '';
   var en = names ? names.en : '';
   document.title = T[lang].title;
