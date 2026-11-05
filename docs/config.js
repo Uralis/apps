@@ -6,6 +6,6 @@ var APP_NAMES = {
 };
 
 var PRIVACY_URLS = {
-  'Моя Игра': 'https://ваш-сайт.ру/privacy.html?app=Моя Игра',
+  'Моя Игра': 'privacy.html?app=Моя Игра',
   '_default': '#'
 };
