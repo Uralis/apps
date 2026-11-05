@@ -13,10 +13,57 @@ var APP_NAMES = {
     ru: '«Голодный нубик 3D: Кушать!»',
     en: '"Hungry Noob 3D: Eat!"'
   },
-  'uralpro.hungrnubik3d1': {
-    ru: '«Голодный нубик 3D: Кушать!»',
-    en: '"Hungry Noob 3D: Eat!"'
+  'uralpro.CountriesOfTheWorld': {
+    ru: '«Страны мира по флагам»',
+    en: '"Countries of the world"'
   },
+  'uralpro.sudokulogicgame': {
+    ru: '«Судоку - игра на логику»',
+    en: '"Sudoku - logic game"'
+  },
+  'uralpro.magiccrossword': {
+    ru: '«Магический кроссворд»',
+    en: '"Magic Crossword"'
+  },
+  'uralpro.magiccrossword': {
+    ru: '«Магический кроссворд»',
+    en: '"Magic Crossword"'
+  },
+  'uralpro.createyourparkour': {
+    ru: '«Обби: Создай паркур»',
+    en: '"Obby: Create parkour"'
+  },
+  'uralpro.hungrygranny': {
+    ru: '«Голодная бабка Гренни»',
+    en: '"Hungry Granny"'
+  },
+  'uralpro.pixelassembly': {
+    ru: '«Pixel Assembly: Рисование»',
+    en: '"Pixel Assembly: Painting"'
+  },
+  'uralpro.hungrynubik': {
+    ru: '«Голодный нубик: Кушать!»',
+    en: '"Hungry Noob: Eat!"'
+  },
+  'uralpro.fillingblocks': {
+    ru: '«Заполнение блоков»',
+    en: '"Filling blocks"'
+  },
+  'uralpro.savinglizochka': {
+    ru: '«Спасение Лизочки»',
+    en: '"Saving Lizochka"'
+  },
+  'uralpro.NameCompatibility': {
+    ru: '«Совместимость имен»',
+    en: '"Name compatibility"'
+  }
+
+
+
+
+   
+
+   
   /* добавляйте игры по образцу:
   'Вторая Игра': { ru: '«Вторая Игра»', en: '"Second Game"' }
   */
