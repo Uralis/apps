@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Условия использования</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Arial,Helvetica,sans-serif;color:#222;background:#fff;line-height:1.6}
+.wrap{max-width:760px;margin:0 auto;padding:24px 16px}
+header{border-bottom:1px solid #e5e5e5;padding-bottom:16px;margin-bottom:8px}
+h1{font-size:24px;color:#1a4d8f}
+.langs{margin-top:10px}
+.langs button{background:#fff;border:1px solid #1a4d8f;color:#1a4d8f;padding:5px 14px;border-radius:4px;cursor:pointer;font-size:14px}
+.langs button.active{background:#1a4d8f;color:#fff}
+h2{font-size:18px;color:#1a4d8f;margin:24px 0 8px}
+p{margin:8px 0}
+a{color:#1a4d8f}
+footer{border-top:1px solid #e5e5e5;margin-top:32px;padding-top:12px;font-size:13px;color:#777}
+.appname{font-weight:bold}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+<h1 id="pageTitle">Условия использования</h1>
+<div class="langs">
+<button id="btnRu" onclick="setLang('ru')">Русский</button>
+<button id="btnEn" onclick="setLang('en')">English</button>
+</div>
+</header>
+
+<div id="blockRu">
+<h2>1. Общие положения</h2>
+<p>Настоящие условия использования регулируют использование мобильного приложения <span class="appname"></span> (далее — «Приложение»), разработанного UralPro (Павел Федосеев, Россия). Устанавливая и используя Приложение, вы принимаете настоящие условия.</p>
+<h2>2. Лицензия</h2>
+<p>Вам предоставляется бесплатная неисключительная лицензия на использование Приложения в личных некоммерческих целях. Копирование, изменение и распространение Приложения или его частей без разрешения разработчика запрещены.</p>
+<h2>3. Реклама</h2>
+<p>Приложение является бесплатным и финансируется за счёт показов рекламы, в том числе через Яндекс Рекламную сеть (РСЯ). Разработчик не несёт ответственности за содержание рекламных материалов и не является их рекламодателем.</p>
+<h2>4. Политика конфиденциальности</h2>
+<p>Информация о сборе и обработке данных приведена в <a id="privLinkRu" href="#">Политике конфиденциальности</a>.</p>
+<h2>5. Ограничение ответственности</h2>
+<p>Приложение предоставляется «как есть», без каких-либо гарантий. Разработчик не несёт ответственности за возможный ущерб в результате использования Приложения, а также за содержание внешних ресурсов и рекламы.</p>
+<h2>6. Изменения условий</h2>
+<p>Разработчик может обновлять настоящие условия. Продолжение использования Приложения после публикации изменений означает согласие с ними. Дата последнего обновления: 5 ноября 2026 года.</p>
+<h2>7. Контакты</h2>
+<p>По вопросам использования Приложения: UralPro, uralproapps@gmail.com.</p>
+</div>
+
+<div id="blockEn" style="display:none">
+<h2>1. General</h2>
+<p>These Terms of Use govern the use of the mobile application <span class="appname"></span> (the "Application"), developed by UralPro (Pavel Fedoseev, Russia). By installing and using the Application you accept these terms.</p>
+<h2>2. License</h2>
+<p>You are granted a free non-exclusive license to use the Application for personal, non-commercial purposes. Copying, modification and distribution of the Application or its parts without the developer's permission is prohibited.</p>
+<h2>3. Advertising</h2>
+<p>The Application is free and funded by advertising, including the Yandex Advertising Network. The developer is not responsible for the content of advertising materials and is not their advertiser.</p>
+<h2>4. Privacy Policy</h2>
+<p>Information about data collection and processing is provided in the <a id="privLinkEn" href="#">Privacy Policy</a>.</p>
+<h2>5. Limitation of Liability</h2>
+<p>The Application is provided "as is", without any warranties. The developer is not liable for any damage resulting from the use of the Application, or for the content of external resources and advertising.</p>
+<h2>6. Changes to Terms</h2>
+<p>The developer may update these terms. Continued use of the Application after publication of changes constitutes acceptance. Last updated: November 5, 2026.</p>
+<h2>7. Contacts</h2>
+<p>For questions about the Application: UralPro, uralproapps@gmail.com.</p>
+</div>
+
+<footer id="footer">© 2026 UralPro</footer>
+</div>
+<script>
+/* НАСТРОЙКИ: впишите свои адреса */
+var APP_NAMES = {
+  'Моя Игра': { ru: '«Моя Игра»', en: '"My Game"' }
+};
+var PRIVACY_URLS = {
+  'Моя Игра': 'https://ваш-сайт.ру/privacy.html?app=Моя Игра',
+  '_default': '#'
+};
+var T = {
+  ru: { title: 'Условия использования', footer: '© 2026 UralPro' },
+  en: { title: 'Terms of Use', footer: '© 2026 UralPro' }
+};
+function getParams() {
+  var p = {}, q = location.search.substring(1).split('&');
+  for (var i = 0; i < q.length; i++) {
+    var kv = q[i].split('=');
+    p[decodeURIComponent(kv[0])] = decodeURIComponent((kv[1] || '').replace(/\+/g, ' '));
+  }
+  return p;
+}
+var appName = getParams().app || '';
+var lang = localStorage.getItem('terms_lang') ||
+  ((navigator.language || '').indexOf('ru') === 0 ? 'ru' : 'en');
+function apply() {
+  var names = APP_NAMES[appName];
+  var ru = names ? names.ru : '';
+  var en = names ? names.en : '';
+  document.title = T[lang].title;
+  document.getElementById('pageTitle').textContent = T[lang].title;
+  document.getElementById('footer').textContent = T[lang].footer;
+  var ruSpans = document.getElementById('blockRu').getElementsByClassName('appname');
+  for (var i = 0; i < ruSpans.length; i++) ruSpans[i].textContent = ru;
+  var enSpans = document.getElementById('blockEn').getElementsByClassName('appname');
+  for (var j = 0; j < enSpans.length; j++) enSpans[j].textContent = en;
+  var pl = PRIVACY_URLS[appName] || PRIVACY_URLS._default;
+  document.getElementById('privLinkRu').href = pl;
+  document.getElementById('privLinkEn').href = pl;
+  document.getElementById('blockRu').style.display = lang === 'ru' ? '' : 'none';
+  document.getElementById('blockEn').style.display = lang === 'en' ? '' : 'none';
+  document.getElementById('btnRu').className = lang === 'ru' ? 'active' : '';
+  document.getElementById('btnEn').className = lang === 'en' ? 'active' : '';
+}
+function setLang(l) { lang = l; localStorage.setItem('terms_lang', l); apply(); }
+apply();
+</script>
+</body>
+</html>
