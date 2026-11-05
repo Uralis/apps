@@ -66,15 +66,8 @@ footer{border-top:1px solid #e5e5e5;margin-top:32px;padding-top:12px;font-size:1
 
 <footer id="footer">© 2026 UralPro</footer>
 </div>
+<script src="config.js"></script>
 <script>
-/* НАСТРОЙКИ: впишите свои адреса */
-var APP_NAMES = {
-  'Моя Игра': { ru: '«Моя Игра»', en: '"My Game"' }
-};
-var PRIVACY_URLS = {
-  'Моя Игра': 'https://ваш-сайт.ру/privacy.html?app=Моя Игра',
-  '_default': '#'
-};
 var T = {
   ru: { title: 'Условия использования', footer: '© 2026 UralPro' },
   en: { title: 'Terms of Use', footer: '© 2026 UralPro' }
@@ -91,7 +84,7 @@ var appName = getParams().app || '';
 var lang = localStorage.getItem('terms_lang') ||
   ((navigator.language || '').indexOf('ru') === 0 ? 'ru' : 'en');
 function apply() {
-  var names = APP_NAMES[appName];
+  var names = (typeof APP_NAMES !== 'undefined' && APP_NAMES[appName]) ? APP_NAMES[appName] : null;
   var ru = names ? names.ru : '';
   var en = names ? names.en : '';
   document.title = T[lang].title;
@@ -101,7 +94,7 @@ function apply() {
   for (var i = 0; i < ruSpans.length; i++) ruSpans[i].textContent = ru;
   var enSpans = document.getElementById('blockEn').getElementsByClassName('appname');
   for (var j = 0; j < enSpans.length; j++) enSpans[j].textContent = en;
-  var pl = PRIVACY_URLS[appName] || PRIVACY_URLS._default;
+  var pl = (typeof PRIVACY_URLS !== 'undefined') ? (PRIVACY_URLS[appName] || PRIVACY_URLS._default) : '#';
   document.getElementById('privLinkRu').href = pl;
   document.getElementById('privLinkEn').href = pl;
   document.getElementById('blockRu').style.display = lang === 'ru' ? '' : 'none';
