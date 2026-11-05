@@ -9,9 +9,13 @@ var APP_NAMES = {
     ru: '«Найди слово - 5 букв»',
     en: '"Find the word - 5 letters"'
   },
-  '2': {
-    ru: '«Моя Игра»',
-    en: '"My Game"'
+  'uralpro.hungrnubik3d': {
+    ru: '«Голодный нубик 3D: Кушать!»',
+    en: '"Hungry Noob 3D: Eat!"'
+  },
+  'uralpro.hungrnubik3d1': {
+    ru: '«Голодный нубик 3D: Кушать!»',
+    en: '"Hungry Noob 3D: Eat!"'
   },
   /* добавляйте игры по образцу:
   'Вторая Игра': { ru: '«Вторая Игра»', en: '"Second Game"' }
